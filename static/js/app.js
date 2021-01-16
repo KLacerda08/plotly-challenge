@@ -50,7 +50,14 @@ function buildCharts1(inputValue) {
         // Get top ten from each array for plotting; data is already sorted in descending order
         var valuesTopTen = otuValues[sampleId].slice(0,10).reverse();
         var idsTopTen = otuIds[sampleId].slice(0,10).reverse();
+        var yAxisIds = idsTopTen.map(function(record) {
+                return `OTU-` + `${record}`
+                });
         var labelsTopTen = otuLabels[sampleId].slice(0,10).reverse();
+
+        // var otuIds = sampleData.map(function(record) {
+        //     return `OTU + ${record.otu_ids}`
+        //     });
 
         // identify the html tag and clear it from it's previous load
         var barChart = d3.select("#bar");
@@ -59,8 +66,10 @@ function buildCharts1(inputValue) {
         // Create the Trace
         var trace1 = {
             x: valuesTopTen,
-            // y: otuIds,
-            type: "bar"
+            y: yAxisIds,
+            text: labelsTopTen,
+            type: "bar",
+            orientation: "h",
         };
 
         // Create the data array for the plot
@@ -68,9 +77,11 @@ function buildCharts1(inputValue) {
 
         // Define the plot layout
         var layout = {
-        title: "Top 10 Belly Button Microbes",
-        xaxis: { title: "Number of Bacteria Present" },
-        yaxis: { title: "Type of Bacteria (OTU ID)" }
+        title: "Top 10 Microbial Species",
+        xaxis: { title: "Number of Species Present" },
+        yaxis: { 
+            title: "Species (OTU ID)",
+            tickmode: "linear" }
         };
 
         // Plot the chart to the tag with the id "bar"
