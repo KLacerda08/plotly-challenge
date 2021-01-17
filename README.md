@@ -1,6 +1,6 @@
 # Belly Button Biodiversity
 
-![Title](bellybutton_cartoon.jpg)
+![Title](image/bellybutton_cartoon.jpg)
 
 ## Table of contents
 * [Assignment](#assignment)
@@ -31,7 +31,7 @@ developed to build the bar and bubble plots, and the demographic data of the pat
 
 To operate the dashboard, select the Test Subject ID from the dropdown menu.  The bubble plot shows all the microbial groups (operational taxonomic units or OTUs) for that patient; the markers are sized in relation to the count of the OTU present. The bar plot shows the top ten OTUs in the selected patient. In some cases, the patient did not have ten OTUs present, in which case fewer are shown. An example of the dashboard output is provide below.  
 (patient 1601).  
-![Title](plots.png)
+![Title](images/plots.png)
 
 ## Evaluation
 The data shows that certain OTUs, such as 944, 1795, and 2419 are common across many individuals in substantial concentrations.  Additional analysis could be performed with statistics to show which OTU(s) are most common across the population. 
