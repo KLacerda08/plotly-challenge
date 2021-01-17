@@ -7,6 +7,7 @@ d3.json('samples.json').then(function(response) {
     })
 })
 
+// Develop a function to build the plots 
 function buildPlots(patientId){
     // Read json data 
     d3.json("samples.json").then(function(response) {
@@ -17,7 +18,7 @@ function buildPlots(patientId){
             return record.id
             }).indexOf(patientId);
 
-//      // Build demographic info
+        // Build demographic info
         // read the metadata from the json response
         var patientData = response.metadata;
         // identify the html element and clear it from it's previous load
@@ -78,12 +79,12 @@ function buildPlots(patientId){
             xaxis:{
 
                 title: {
-                    text: "Species (OTU ID)"
+                    text: "Microbial Group (OTU ID)"
                     }
             },
             yaxis:{
                 title: {
-                    text: "Number of Species Present"
+                    text: "Count of Microbial Group"
                 }
             },
         };
@@ -101,10 +102,10 @@ function buildPlots(patientId){
         var dataBar = [traceBar];
 
         var layoutBar = {
-        title: "Top 10 Microbial Species",
-        xaxis: { title: "Number of Species Present" },
+        title: "Top 10 Operational Taxonomic Units",
+        xaxis: { title: "Count of Microbial Group" },
         yaxis: { 
-            title: "Species (OTU ID)",
+            title: "Microbial Group (OTU ID)",
             tickmode: "linear" }
         };
 
@@ -117,15 +118,16 @@ function init() {
     // Read json data 
     d3.json("samples.json").then(function(response) {
         var sampleData = response.samples;
+        // identify a patient ID for the initial page load 
         var patientId = sampleData.map(function(record) {
             return record.id
             })[0];
-
+        
     buildPlots(patientId)
     }); 
 }
 
-// change charts with dropdown selection
+// change plots with dropdown selection
 function optionChanged(newPatient) {
     buildPlots(newPatient);
 }
