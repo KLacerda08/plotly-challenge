@@ -1,10 +1,7 @@
 // Identify sample IDs and append to html dropdown element    
 d3.json('samples.json').then(function(response) {
     var sampleId = response.names;
-    // var select=d3.selectAll('#selDataset');
     var dropDown = d3.select("#selDataset");
-    // Object.entries(id).forEach(([i,v])=>{
-    //     select.append('option').text(v);
     Object.entries(sampleId).forEach(function([key, value]) {
         dropDown.append("option").text(value);
     })
@@ -19,9 +16,7 @@ function buildPlots(patientId){
         var patientIndex = sampleData.map(function(record) {
             return record.id
             }).indexOf(patientId);
-        console.log(patientIndex);
-        // assign patientIndex for code testing
-        // patientIndex = 0;
+
 //      // Build demographic info
         // read the metadata from the json response
         var patientData = response.metadata;
@@ -53,13 +48,11 @@ function buildPlots(patientId){
                 return `OTU-` + `${record}`
                 });
         var labelsTopTen = otuLabels[patientIndex].slice(0,10).reverse();
-        console.log(valuesTopTen);
 
         // Assign variables for bubble plot
         var otuValues2 = otuValues[patientIndex];
         var otuIds2 = otuIds[patientIndex];
         var otuLabels2 = otuLabels[patientIndex];
-        console.log(otuValues2);
         var colorBub = otuIds2;
         var colorScale = "Portland";
         var markerSize = otuValues2.map(function(record) {
@@ -120,14 +113,22 @@ function buildPlots(patientId){
     });
 }
 
-// function init() {
-//     //assign patientIndex for initial page
-//     patientIndex = 0;
-//     buildPlots(firstPatient)
-// };
+function init() {
+    // Read json data 
+    d3.json("samples.json").then(function(response) {
+        var sampleData = response.samples;
+        var patientId = sampleData.map(function(record) {
+            return record.id
+            })[0];
+
+    buildPlots(patientId)
+    }); 
+}
+
 // change charts with dropdown selection
 function optionChanged(newPatient) {
     buildPlots(newPatient);
 }
 
-
+init();
+buildPlots();
