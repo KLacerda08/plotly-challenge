@@ -1,6 +1,6 @@
 # Belly Button Biodiversity
 
-![Title](image/bellybutton_cartoon.jpg)
+![Title](images/bellybutton_cartoon.jpg)
 
 ## Table of contents
 * [Assignment](#assignment)
@@ -14,9 +14,8 @@ Use JavaScript with plotly and D3 to generate a belly button biodiversity webpag
 
 ## Data Sources
 The basic website design (html structure and css, as well as file links) were provided in the files below: 
-- Belly button bacteria data: https://github.com/KLacerda08/plotly-challenge/tree/main/Resources/samples.json
+* Belly button bacteria data: https://github.com/KLacerda08/plotly-challenge/tree/main/Resources/samples.json
 * original data from: http://robdunnlab.com/projects/belly-button-biodiversity/ 
-- Basic website design
 * html: https://github.com/KLacerda08/plotly-challenge/tree/main/Resources/index.html
 * app.js file: https://github.com/KLacerda08/plotly-challenge/tree/main/Resources/static/js/app.js
 
